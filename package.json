@@ -1,0 +1,29 @@
+{
+  "name": "Slak-Menu",
+  "version": "1.0.0",
+  "description": "A Slak menu component made with hyperscript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lakowske/Slak-Menu.git"
+  },
+  "keywords": [
+    "Slak",
+    "menu",
+    "component",
+    "hyperscript"
+  ],
+  "author": "Seth Lakowske",
+  "license": "BSD3",
+  "bugs": {
+    "url": "https://github.com/lakowske/Slak-Menu/issues"
+  },
+  "homepage": "https://github.com/lakowske/Slak-Menu",
+  "dependencies": {
+    "slak-listview": "^1.0.0",
+    "virtual-dom": "^2.1.1"
+  }
+}
