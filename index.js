@@ -52,13 +52,3 @@ function itemToTreeFn(state, events) {
 
 module.exports.Menu = Menu;
 module.exports.render = render;
-
-
-
-
-
-
-
-
-
-
