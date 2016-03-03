@@ -1,6 +1,6 @@
 {
   "name": "slak-menu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Slak menu component made with hyperscript",
   "main": "index.js",
   "scripts": {
