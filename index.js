@@ -9,7 +9,7 @@ var EventEmitter  = require('events');
 /*
  * Construct a horizontal menu
  */
-function Menu(items, emit) {
+function Menu(items, opts) {
     var events = new EventEmitter();
 
     var state = {
@@ -17,18 +17,29 @@ function Menu(items, emit) {
         events
     }
 
+    var itemToTree = itemToTreeFn;
+    var className = 'menu';
+    
+    if (opts) {
+        if (opts.itemToTreeFn) {
+            itemToTree = itemToTree;
+        }
+        if (opts.className) {
+            className = opts.className
+        }
+    }
+    
     state.listView = ListView.ListView(items,
-                                       itemToTreeFn(state, events),
+                                       itemToTree(state, events),
                                        '',
                                        '',
                                        false,
                                        false,
-                                       {className : 'menu'});
+                                       {className : className});
     
     events.on('click', function(item) {
         state.selected = item;
-        emit('dirty');
-    })
+     })
     
     return state;
 }
@@ -42,13 +53,20 @@ function render(state) {
 function itemToTreeFn(state, events) {
 
     return function(item, emit) {
-        return h('a', {href: '#',
+        return h('a', {href: '#' + item.name,
                        onclick: function() {events.emit('click', item)},
                        className: item === state.selected ? 'selected' : '',
-                       style: "display: block"}, item.name)
+                       }, item.name)
     }
     
 }
 
+function setItems(state, items) {
+    state.listView.items = items;
+    state.selected = items[0];
+    return state;
+}
+
 module.exports.Menu = Menu;
 module.exports.render = render;
+module.exports.setItems = setItems;
